@@ -2,6 +2,9 @@
 
 项目1：extractPolicyFromPDF（从PDF文件中解析到保单信息然后存放到Excel文件中）
 
+将代码打包成exe文件:
+pyinstaller --onefile --name="保险保单信息提取工具" extract_policy_from_pdf.py
+
 保险保单信息提取工具 使用说明
 
 1. 确保以下文件在同一目录：
