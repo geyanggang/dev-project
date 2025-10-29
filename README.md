@@ -2,4 +2,4 @@
 
 项目1：extractPolicyFromPDF（从PDF文件中解析到保单信息然后存放到Excel文件中）
 
-项目2：(微信小程序)
+项目2：(码上接 微信小程序)
