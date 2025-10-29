@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "users": {
+      "read": true,
+      "write": "auth.openid == doc.openId",
+      "create": false,
+      "delete": false
+    },
+    "tasks": {
+      "read": true,
+      "write": "auth.openid == doc.customerId || auth.openid == doc.developerId",
+      "create": false,
+      "delete": false
+    },
+    "orders": {
+      "read": "auth.openid == doc.customerId || auth.openid == doc.developerId",
+      "write": false,
+      "create": false,
+      "delete": false
+    },
+    "reviews": {
+      "read": true,
+      "write": false,
+      "create": false,
+      "delete": false
+    }
+  },
+  "note": "所有写操作都通过云函数进行，确保数据安全性"
+}
+

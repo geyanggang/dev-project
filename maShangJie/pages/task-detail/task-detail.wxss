@@ -1,0 +1,173 @@
+/* pages/task-detail/task-detail.wxss */
+.container {
+  padding-bottom: 140rpx;
+}
+
+.task-detail {
+  padding: 20rpx;
+}
+
+.task-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+}
+
+.title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 30rpx;
+}
+
+.task-title {
+  flex: 1;
+  font-size: 36rpx;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-right: 20rpx;
+}
+
+.title-row .badge {
+  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+.price-section {
+  text-align: center;
+  padding: 30rpx 0;
+  border-top: 1rpx solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1rpx solid rgba(255, 255, 255, 0.2);
+}
+
+.price-label {
+  font-size: 26rpx;
+  opacity: 0.9;
+  margin-bottom: 10rpx;
+}
+
+.price-value {
+  font-size: 56rpx;
+  font-weight: 700;
+  margin-bottom: 10rpx;
+}
+
+.ai-price {
+  font-size: 24rpx;
+  opacity: 0.8;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30rpx;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+}
+
+.info-item image {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 8rpx;
+  filter: brightness(0) invert(1);
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.task-description {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.8;
+  white-space: pre-wrap;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.budget-range {
+  font-size: 32rpx;
+  color: #667eea;
+  font-weight: 600;
+  padding: 20rpx;
+  background: #f5f7ff;
+  border-radius: 12rpx;
+  text-align: center;
+}
+
+.user-card {
+  display: flex;
+  align-items: flex-start;
+  padding: 20rpx;
+  background: #f8f8f8;
+  border-radius: 12rpx;
+}
+
+.user-card .avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+
+.user-info {
+  flex: 1;
+}
+
+.nickname {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.user-stats {
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 10rpx;
+}
+
+.stat-item {
+  margin-right: 30rpx;
+}
+
+.stars {
+  color: #ffa500;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10rpx;
+}
+
+/* 底部操作栏 */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  padding: 20rpx;
+  box-shadow: 0 -4rpx 20rpx rgba(0, 0, 0, 0.05);
+  display: flex;
+  gap: 20rpx;
+  z-index: 100;
+}
+
+.action-btn {
+  flex: 1;
+  margin: 0;
+}
+

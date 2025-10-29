@@ -1,0 +1,78 @@
+<!--pages/my-orders/my-orders.wxml-->
+<view class="container">
+  <!-- 订单列表 -->
+  <view class="order-list">
+    <view class="order-card" wx:for="{{orders}}" wx:key="_id" bindtap="goToTaskDetail" data-id="{{item.taskId}}">
+      <!-- 订单头部 -->
+      <view class="order-header">
+        <view class="order-title">{{item.taskInfo.title}}</view>
+        <view class="badge badge-{{item.taskInfo.status}}">{{statusText[item.taskInfo.status]}}</view>
+      </view>
+
+      <!-- 订单金额 -->
+      <view class="amount-section">
+        <view class="amount-item">
+          <text class="label">订单金额</text>
+          <text class="value">¥{{item.amount}}</text>
+        </view>
+        <view class="amount-item" wx:if="{{item.platformFee}}">
+          <text class="label">平台费用</text>
+          <text class="value text-muted">¥{{item.platformFee}}</text>
+        </view>
+        <view class="amount-item" wx:if="{{item.developerAmount}}">
+          <text class="label">实际到账</text>
+          <text class="value text-success">¥{{item.developerAmount}}</text>
+        </view>
+      </view>
+
+      <!-- 支付状态 -->
+      <view class="payment-status">
+        <view class="status-item">
+          <text class="label">押金状态:</text>
+          <text class="value {{depositStatusClass[item.depositStatus]}}">
+            {{depositStatusText[item.depositStatus]}}
+          </text>
+        </view>
+        <view class="status-item">
+          <text class="label">支付状态:</text>
+          <text class="value {{paymentStatusClass[item.paymentStatus]}}">
+            {{paymentStatusText[item.paymentStatus]}}
+          </text>
+        </view>
+      </view>
+
+      <!-- 对方信息 -->
+      <view class="user-info">
+        <image class="avatar" src="{{item.otherUserInfo.avatar}}" mode="aspectFill"></image>
+        <view class="user-details">
+          <view class="nickname">{{item.otherUserInfo.nickname}}</view>
+          <view class="role">{{item.otherUserRole}}</view>
+        </view>
+      </view>
+
+      <!-- 时间信息 -->
+      <view class="time-info">
+        <view class="time-item">
+          <text class="label">创建时间:</text>
+          <text class="value">{{item.createdAt}}</text>
+        </view>
+        <view class="time-item" wx:if="{{item.completedAt}}">
+          <text class="label">完成时间:</text>
+          <text class="value">{{item.completedAt}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{orders.length === 0 && !loading}}">
+    <image src="/images/empty.png" mode="aspectFit"></image>
+    <view class="empty-text">暂无订单记录</view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+</view>
+

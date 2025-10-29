@@ -1,0 +1,55 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/task-detail/task-detail",
+    "pages/publish-task/publish-task",
+    "pages/my-tasks/my-tasks",
+    "pages/my-orders/my-orders",
+    "pages/profile/profile",
+    "pages/user-setup/user-setup",
+    "pages/review/review"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "程序员接单平台",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f8f8f8"
+  },
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#07c160",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "任务大厅",
+        "iconPath": "images/task.png",
+        "selectedIconPath": "images/task-active.png"
+      },
+      {
+        "pagePath": "pages/my-tasks/my-tasks",
+        "text": "我的任务",
+        "iconPath": "images/mytask.png",
+        "selectedIconPath": "images/mytask-active.png"
+      },
+      {
+        "pagePath": "pages/my-orders/my-orders",
+        "text": "我的订单",
+        "iconPath": "images/order.png",
+        "selectedIconPath": "images/order-active.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "images/profile.png",
+        "selectedIconPath": "images/profile-active.png"
+      }
+    ]
+  },
+  "cloud": true,
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
+

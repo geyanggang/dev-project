@@ -1,0 +1,98 @@
+{
+  "collections": [
+    {
+      "name": "users",
+      "description": "用户表",
+      "indexes": [
+        {
+          "name": "openId_index",
+          "keys": [{"name": "openId", "type": "asc"}],
+          "unique": true
+        },
+        {
+          "name": "userType_index",
+          "keys": [{"name": "userType", "type": "asc"}]
+        },
+        {
+          "name": "rating_index",
+          "keys": [{"name": "rating", "type": "desc"}]
+        }
+      ]
+    },
+    {
+      "name": "tasks",
+      "description": "任务表",
+      "indexes": [
+        {
+          "name": "customerId_index",
+          "keys": [{"name": "customerId", "type": "asc"}]
+        },
+        {
+          "name": "developerId_index",
+          "keys": [{"name": "developerId", "type": "asc"}]
+        },
+        {
+          "name": "status_index",
+          "keys": [{"name": "status", "type": "asc"}]
+        },
+        {
+          "name": "createdAt_index",
+          "keys": [{"name": "createdAt", "type": "desc"}]
+        },
+        {
+          "name": "status_createdAt_index",
+          "keys": [
+            {"name": "status", "type": "asc"},
+            {"name": "createdAt", "type": "desc"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "orders",
+      "description": "订单表",
+      "indexes": [
+        {
+          "name": "taskId_index",
+          "keys": [{"name": "taskId", "type": "asc"}],
+          "unique": true
+        },
+        {
+          "name": "customerId_index",
+          "keys": [{"name": "customerId", "type": "asc"}]
+        },
+        {
+          "name": "developerId_index",
+          "keys": [{"name": "developerId", "type": "asc"}]
+        },
+        {
+          "name": "createdAt_index",
+          "keys": [{"name": "createdAt", "type": "desc"}]
+        }
+      ]
+    },
+    {
+      "name": "reviews",
+      "description": "评价表",
+      "indexes": [
+        {
+          "name": "toUserId_index",
+          "keys": [{"name": "toUserId", "type": "asc"}]
+        },
+        {
+          "name": "taskId_fromUserId_index",
+          "keys": [
+            {"name": "taskId", "type": "asc"},
+            {"name": "fromUserId", "type": "asc"}
+          ],
+          "unique": true
+        },
+        {
+          "name": "createdAt_index",
+          "keys": [{"name": "createdAt", "type": "desc"}]
+        }
+      ]
+    }
+  ]
+}
+

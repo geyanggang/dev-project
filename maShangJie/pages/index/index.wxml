@@ -1,0 +1,122 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <view class="search-input">
+      <image class="search-icon" src="/images/search.png" mode="aspectFit"></image>
+      <input type="text" placeholder="搜索任务..." bindinput="onSearchInput" value="{{searchText}}" />
+    </view>
+    <view class="filter-btn" bindtap="showFilterPopup">
+      <image src="/images/filter.png" mode="aspectFit"></image>
+    </view>
+  </view>
+
+  <!-- 快速发布按钮 -->
+  <view class="quick-publish" wx:if="{{userType === 'customer'}}">
+    <button class="btn-primary publish-btn" bindtap="goToPublish">
+      <image src="/images/add.png" mode="aspectFit"></image>
+      发布任务
+    </button>
+  </view>
+
+  <!-- 筛选标签 -->
+  <scroll-view class="filter-tags" scroll-x="true">
+    <view class="tag-item {{activeFilter === 'all' ? 'active' : ''}}" bindtap="onFilterChange" data-filter="all">
+      全部
+    </view>
+    <view class="tag-item {{activeFilter === 'pending' ? 'active' : ''}}" bindtap="onFilterChange" data-filter="pending">
+      待接单
+    </view>
+    <view class="tag-item {{activeFilter === 'grabbed' ? 'active' : ''}}" bindtap="onFilterChange" data-filter="grabbed">
+      已接单
+    </view>
+    <view class="tag-item {{activeFilter === 'in-progress' ? 'active' : ''}}" bindtap="onFilterChange" data-filter="in-progress">
+      进行中
+    </view>
+  </scroll-view>
+
+  <!-- 任务列表 -->
+  <view class="task-list">
+    <view class="task-card" wx:for="{{tasks}}" wx:key="_id" bindtap="goToTaskDetail" data-id="{{item._id}}">
+      <!-- 任务头部 -->
+      <view class="task-header">
+        <view class="task-title">{{item.title}}</view>
+        <view class="badge badge-{{item.status}}">{{statusText[item.status]}}</view>
+      </view>
+
+      <!-- 任务描述 -->
+      <view class="task-desc">{{item.description}}</view>
+
+      <!-- 技术栈 -->
+      <view class="tech-stack">
+        <view class="tag tag-primary" wx:for="{{item.techStack}}" wx:key="index" wx:for-item="tech">
+          {{tech}}
+        </view>
+      </view>
+
+      <!-- 任务信息 -->
+      <view class="task-info">
+        <view class="info-item">
+          <image src="/images/money.png" mode="aspectFit"></image>
+          <text class="price">¥{{item.finalPrice || item.aiSuggestedPrice}}</text>
+        </view>
+        <view class="info-item">
+          <image src="/images/time.png" mode="aspectFit"></image>
+          <text>{{item.deadline}}</text>
+        </view>
+      </view>
+
+      <!-- 发布者信息 -->
+      <view class="task-footer">
+        <view class="publisher">
+          <image class="avatar" src="{{item.customerInfo.avatar}}" mode="aspectFill"></image>
+          <text>{{item.customerInfo.nickname}}</text>
+        </view>
+        <view class="task-time text-muted">{{item.createdAt}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{tasks.length === 0 && !loading}}">
+    <image src="/images/empty.png" mode="aspectFit"></image>
+    <view class="empty-text">暂无任务</view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+
+  <!-- 筛选弹窗 -->
+  <view class="filter-popup" wx:if="{{showFilter}}" bindtap="hideFilterPopup">
+    <view class="popup-content" catchtap="stopPropagation">
+      <view class="popup-header">
+        <text class="popup-title">筛选条件</text>
+        <image src="/images/close.png" bindtap="hideFilterPopup" mode="aspectFit"></image>
+      </view>
+      
+      <view class="filter-section">
+        <view class="section-title">价格范围</view>
+        <slider min="0" max="10000" value="{{maxPrice}}" bindchange="onPriceChange" show-value />
+      </view>
+
+      <view class="filter-section">
+        <view class="section-title">技术栈</view>
+        <view class="tech-options">
+          <view class="tag {{selectedTechs.indexOf(item) > -1 ? 'tag-primary' : ''}}" 
+                wx:for="{{techOptions}}" wx:key="index"
+                bindtap="toggleTech" data-tech="{{item}}">
+            {{item}}
+          </view>
+        </view>
+      </view>
+
+      <view class="popup-footer">
+        <button class="btn-outline" bindtap="resetFilter">重置</button>
+        <button class="btn-primary" bindtap="applyFilter">应用</button>
+      </view>
+    </view>
+  </view>
+</view>
+

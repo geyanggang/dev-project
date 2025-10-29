@@ -1,0 +1,63 @@
+<!--pages/user-setup/user-setup.wxml-->
+<view class="container">
+  <view class="setup-content">
+    <!-- Logo和标题 -->
+    <view class="header">
+      <image class="logo" src="/images/logo.png" mode="aspectFit"></image>
+      <view class="title">欢迎使用程序员接单平台</view>
+      <view class="subtitle">请选择你的身份</view>
+    </view>
+
+    <!-- 身份选择 -->
+    <view class="role-selector">
+      <view class="role-card {{selectedRole === 'customer' ? 'active' : ''}}" 
+            bindtap="selectRole" 
+            data-role="customer">
+        <image src="/images/customer.png" mode="aspectFit"></image>
+        <view class="role-title">我是客户</view>
+        <view class="role-desc">发布开发任务,找程序员</view>
+      </view>
+
+      <view class="role-card {{selectedRole === 'developer' ? 'active' : ''}}" 
+            bindtap="selectRole" 
+            data-role="developer">
+        <image src="/images/developer.png" mode="aspectFit"></image>
+        <view class="role-title">我是程序员</view>
+        <view class="role-desc">接单赚钱,展示技能</view>
+      </view>
+    </view>
+
+    <!-- 程序员技能选择 -->
+    <view class="skills-section" wx:if="{{selectedRole === 'developer'}}">
+      <view class="section-title">选择你的技能标签</view>
+      <view class="skills-selector">
+        <view class="tag {{selectedSkills.indexOf(item) > -1 ? 'tag-primary' : ''}}"
+              wx:for="{{skillOptions}}"
+              wx:key="index"
+              bindtap="toggleSkill"
+              data-skill="{{item}}">
+          {{item}}
+        </view>
+      </view>
+      <view class="hint">已选择 {{selectedSkills.length}} 个技能</view>
+    </view>
+
+    <!-- 授权登录按钮 -->
+    <view class="auth-section">
+      <button class="btn-primary auth-btn" 
+              open-type="getUserInfo" 
+              bindgetuserinfo="onGetUserInfo"
+              disabled="{{!selectedRole}}">
+        微信授权并开始使用
+      </button>
+      
+      <view class="agreement">
+        <text>点击即表示同意</text>
+        <text class="link" bindtap="showAgreement">《用户协议》</text>
+        <text>和</text>
+        <text class="link" bindtap="showPrivacy">《隐私政策》</text>
+      </view>
+    </view>
+  </view>
+</view>
+

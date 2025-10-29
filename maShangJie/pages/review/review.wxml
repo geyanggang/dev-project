@@ -1,0 +1,68 @@
+<!--pages/review/review.wxml-->
+<view class="container">
+  <view class="review-form">
+    <!-- 任务信息 -->
+    <view class="task-info card">
+      <view class="task-title">{{taskInfo.title}}</view>
+      <view class="task-amount">¥{{taskInfo.amount}}</view>
+    </view>
+
+    <!-- 对方信息 -->
+    <view class="user-info card">
+      <image class="avatar" src="{{otherUserInfo.avatar}}" mode="aspectFill"></image>
+      <view class="user-details">
+        <view class="nickname">{{otherUserInfo.nickname}}</view>
+        <view class="role">{{otherUserInfo.role}}</view>
+      </view>
+    </view>
+
+    <!-- 评分 -->
+    <view class="card">
+      <view class="section-title">评分</view>
+      <view class="star-rating">
+        <view class="star {{index < rating ? 'active' : ''}}"
+              wx:for="{{5}}"
+              wx:key="index"
+              bindtap="setRating"
+              data-rating="{{index + 1}}">
+          ★
+        </view>
+      </view>
+      <view class="rating-text">{{ratingText[rating]}}</view>
+    </view>
+
+    <!-- 评价内容 -->
+    <view class="card">
+      <view class="section-title">评价内容</view>
+      <textarea class="comment-input"
+                placeholder="请输入您的评价，让其他用户更了解TA的服务质量"
+                bindinput="onCommentInput"
+                value="{{comment}}"
+                maxlength="500"
+                auto-height />
+      <view class="hint">{{comment.length}}/500</view>
+    </view>
+
+    <!-- 快捷标签 -->
+    <view class="card">
+      <view class="section-title">快捷标签</view>
+      <view class="tag-list">
+        <view class="tag {{selectedTags.indexOf(item) > -1 ? 'tag-primary' : ''}}"
+              wx:for="{{quickTags}}"
+              wx:key="index"
+              bindtap="toggleTag"
+              data-tag="{{item}}">
+          {{item}}
+        </view>
+      </view>
+    </view>
+
+    <!-- 提交按钮 -->
+    <view class="submit-section">
+      <button class="btn-primary submit-btn" bindtap="submitReview" disabled="{{submitting}}">
+        {{submitting ? '提交中...' : '提交评价'}}
+      </button>
+    </view>
+  </view>
+</view>
+

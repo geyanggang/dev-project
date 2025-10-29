@@ -1,0 +1,122 @@
+/* pages/my-tasks/my-tasks.wxss */
+.tabs {
+  display: flex;
+  background: #fff;
+  padding: 10rpx;
+  margin: 20rpx;
+  border-radius: 50rpx;
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 20rpx;
+  border-radius: 50rpx;
+  font-size: 28rpx;
+  color: #666;
+  transition: all 0.3s;
+}
+
+.tab-item.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  font-weight: 600;
+}
+
+.task-list {
+  padding: 0 20rpx 20rpx;
+}
+
+.task-card {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+}
+
+.task-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+
+.task-title {
+  flex: 1;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-right: 20rpx;
+}
+
+.task-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  margin-right: 40rpx;
+  font-size: 26rpx;
+  color: #666;
+}
+
+.info-item image {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 8rpx;
+}
+
+.price {
+  color: #ff6b6b;
+  font-weight: 600;
+  font-size: 30rpx;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.avatar {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  margin-right: 16rpx;
+}
+
+.user-details {
+  flex: 1;
+}
+
+.nickname {
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 6rpx;
+}
+
+.rating {
+  font-size: 24rpx;
+  color: #ffa500;
+}
+
+.task-actions {
+  display: flex;
+  gap: 20rpx;
+}
+
+.btn-sm {
+  flex: 1;
+  padding: 16rpx 24rpx;
+  font-size: 26rpx;
+}
+
